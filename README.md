@@ -35,5 +35,6 @@ function Main()
     Printf "Hello FIXscript"
 }
 ```
-## note
-this isnt a copy of other languages (i dind even know that other fixscript exist),its just inspiration
+## Note
+
+This is not a copy of other languages. I was not aware that another FIXScript exists at the time. This project is independent and was created as an original experiment based on inspiration from scripting language design.
