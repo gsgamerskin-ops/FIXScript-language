@@ -34,3 +34,6 @@ function Main()
 {
     Printf "Hello FIXscript"
 }
+´´´
+##note
+this isnt a copy of other languages (i dind even know that other fixscript exist),its just inspiration
