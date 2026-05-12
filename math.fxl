@@ -1,0 +1,13 @@
+library "Math"
+
+function Add(a, b)
+{
+    result = a + b
+    Printf result
+}
+
+function Mul(a, b)
+{
+    result = a * b
+    Printf result
+}
