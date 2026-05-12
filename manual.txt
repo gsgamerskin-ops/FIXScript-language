@@ -1,0 +1,189 @@
+====================================================
+            FIXSCRIPT MANUAL v1.1
+====================================================
+
+LANGUAGE FILES
+
+.FIX = source code
+.FXP = project file
+.FXL = library file
+
+====================================================
+FXL LIBRARIES
+====================================================
+
+Libraries are reusable modules.
+
+Example:
+
+library "Graphics"
+
+export DrawTriangle
+
+function DrawTriangle()
+{
+    OpenGL
+    {
+        glBegin(TRIANGLES)
+
+        glVertex3f(0,1,0)
+        glVertex3f(-1,-1,0)
+        glVertex3f(1,-1,0)
+
+        glEnd
+    }
+}
+
+====================================================
+IMPORTING LIBRARIES
+====================================================
+
+import "graphics.fxl"
+
+call DrawTriangle()
+
+====================================================
+EXPORTING FUNCTIONS
+====================================================
+
+export FunctionName
+
+Example:
+
+export RenderCube
+
+====================================================
+MODULES
+====================================================
+
+module Physics
+
+====================================================
+INCLUDING FILES
+====================================================
+
+include "render.fix"
+
+====================================================
+FXP PROJECT FILES
+====================================================
+
+Example:
+
+project "DOOMFIX"
+
+include "main.fix"
+include "player.fix"
+include "render.fix"
+
+import "graphics.fxl"
+
+====================================================
+RUNTIME STRUCTURE
+====================================================
+
+Game/
+
+main.fix
+render.fix
+player.fix
+
+libs/
+graphics.fxl
+audio.fxl
+
+project.fxp
+
+====================================================
+ADVANCED LIBRARY EXAMPLE
+====================================================
+
+library "Math"
+
+export Add
+
+function Add(a,b)
+{
+    result = a + b
+
+    print(result)
+}
+
+====================================================
+OPENGL LIBRARY EXAMPLE
+====================================================
+
+library "Renderer"
+
+export Triangle
+
+function Triangle()
+{
+    OpenGL
+    {
+        glClear
+
+        glBegin(TRIANGLES)
+
+        glColor3f(1,0,0)
+        glVertex3f(0,1,0)
+
+        glColor3f(0,1,0)
+        glVertex3f(-1,-1,0)
+
+        glColor3f(0,0,1)
+        glVertex3f(1,-1,0)
+
+        glEnd
+    }
+}
+
+====================================================
+ASSEMBLY LIBRARY
+====================================================
+
+library "CPU"
+
+export Boot
+
+function Boot()
+{
+    assembly
+    {
+        MOV AX,1
+        INT 10
+    }
+}
+
+====================================================
+COMPILER IDEA
+====================================================
+
+fixrun project.fxp
+
+The runtime loads:
+
+- all .FIX files
+- all .FXL libraries
+- project settings
+
+====================================================
+FUTURE FEATURES
+====================================================
+
+- bytecode
+- VM
+- JIT compiler
+- WASM
+- Android runtime
+- networking
+- shaders
+- AI modules
+- physics
+
+====================================================
+END
+====================================================
+
+FIXscript v1.1
+Experimental retro scripting language.

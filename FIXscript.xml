@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NotepadPlus>
+
+<UserLang name="FIXscript" ext="fix fxs fxp fxl" udlVersion="2.1">
+
+<Settings>
+<Global
+caseIgnored="yes"
+allowFoldOfComments="no"
+foldCompact="no"
+forcePureLC="0"
+decimalSeparator="0"
+/>
+
+<Prefix
+Keywords1="no"
+Keywords2="no"
+Keywords3="no"
+Keywords4="no"
+Keywords5="no"
+Keywords6="no"
+Keywords7="no"
+Keywords8="no"
+/>
+</Settings>
+
+<KeywordLists>
+
+<Keywords name="Comments">00// 01/* 02*/</Keywords>
+
+<Keywords name="Operators1">
+= + - * / % == != < > <= >=
+</Keywords>
+
+<Keywords name="Operators2">
+and or not
+</Keywords>
+
+<Keywords name="Folders in code1, open">{</Keywords>
+<Keywords name="Folders in code1, close">}</Keywords>
+
+<Keywords name="Folders in code2, open">(</Keywords>
+<Keywords name="Folders in code2, close">)</Keywords>
+
+<!-- BASIC -->
+<Keywords name="Keywords1">
+print
+Printf
+input
+HALT
+Goto
+Pick
+Cam
+Button
+text
+packet
+</Keywords>
+
+<!-- FLOW -->
+<Keywords name="Keywords2">
+if
+else
+elseif
+endif
+while
+for
+loop
+break
+continue
+gosub
+returnto
+</Keywords>
+
+<!-- FUNCTIONS -->
+<Keywords name="Keywords3">
+Function
+function
+func
+call
+endfunc
+local
+change
+</Keywords>
+
+<!-- FXL / PROJECT -->
+<Keywords name="Keywords4">
+FXP
+FXL
+project
+library
+module
+import
+include
+export
+require
+runtime
+compiler
+bytecode
+</Keywords>
+
+<!-- OPENGL -->
+<Keywords name="Keywords5">
+OpenGL
+glBegin
+glEnd
+glVertex3f
+glColor3f
+glClear
+glRotatef
+glTranslatef
+glTexCoord2f
+glEnable
+glDisable
+</Keywords>
+
+<!-- ASSEMBLY -->
+<Keywords name="Keywords6">
+assembly
+MOV
+INT
+JMP
+NOP
+PUSH
+POP
+CALL
+RET
+CMP
+JE
+JNE
+HLT
+</Keywords>
+
+<!-- INPUT -->
+<Keywords name="Keywords7">
+SPACE
+ENTER
+ESC
+CTRL
+SHIFT
+ALT
+UP
+DOWN
+LEFT
+RIGHT
+W
+A
+S
+D
+PRESS
+HOLD
+RELEASE
+AUTO
+</Keywords>
+
+<!-- HARDWARE -->
+<Keywords name="Keywords8">
+USB1
+USB2
+USB3
+RJ45-1
+RJ45-2
+COM1
+COM2
+CAM1
+CAM2
+FACE
+motion
+object
+qr
+hand
+</Keywords>
+
+<Keywords name="Delimiters">
+00" 01" 02' 03'
+</Keywords>
+
+</KeywordLists>
+
+<Styles>
+
+<WordsStyle name="DEFAULT" fgColor="DCDCDC" bgColor="1E1E1E" fontStyle="0"/>
+
+<WordsStyle name="COMMENTS" fgColor="6A9955" bgColor="1E1E1E" fontStyle="0"/>
+
+<WordsStyle name="KEYWORDS1" fgColor="4FC1FF" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="KEYWORDS2" fgColor="C586C0" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="KEYWORDS3" fgColor="DCDCAA" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="KEYWORDS4" fgColor="FFAA00" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="KEYWORDS5" fgColor="00D7FF" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="KEYWORDS6" fgColor="FF5555" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="KEYWORDS7" fgColor="00FF99" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="KEYWORDS8" fgColor="FF66CC" bgColor="1E1E1E" fontStyle="1"/>
+
+<WordsStyle name="OPERATORS" fgColor="FFFFFF" bgColor="1E1E1E" fontStyle="1"/>
+
+</Styles>
+
+</UserLang>
+
+</NotepadPlus>
