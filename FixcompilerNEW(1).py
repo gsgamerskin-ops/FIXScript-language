@@ -8,7 +8,7 @@ functions = {}
 # -------------------------
 # EXECUÇÃO DE BLOCO
 # -------------------------
-def run_block(lines):
+def run_block(lines, args=None):
     i = 0
 
     while i < len(lines):
@@ -35,23 +35,23 @@ def run_block(lines):
             var, value = line.split("=", 1)
             variables[var.strip()] = value.strip().strip('"')
 
-        # CALL
+        # CALL COM PARÂMETROS
         elif line.lower().startswith("call"):
-            name = line.replace("call", "").strip()
+            parts = line.split()
+            name = parts[1]
+
+            call_args = parts[2:]
 
             if name in functions:
-                run_block(functions[name])
+                run_block(functions[name], call_args)
             else:
                 print(f"[WARN] Function '{name}' not found")
-
-        else:
-            print(f"[INFO] Unknown command: {line}")
 
         i += 1
 
 
 # -------------------------
-# PARSER DE FUNÇÕES (CORRIGIDO)
+# PARSER DE FUNÇÕES
 # -------------------------
 def parse_functions(code_lines):
     i = 0
@@ -59,20 +59,17 @@ def parse_functions(code_lines):
     while i < len(code_lines):
         line = code_lines[i].strip()
 
-        # detecta function de forma robusta
         match = re.search(r'function\s+([a-zA-Z0-9_]+)', line, re.IGNORECASE)
 
         if match:
             name = match.group(1)
 
-            # procura abertura {
             while i < len(code_lines) and "{" not in code_lines[i]:
                 i += 1
 
             i += 1
             block = []
 
-            # captura até }
             while i < len(code_lines) and "}" not in code_lines[i]:
                 block.append(code_lines[i])
                 i += 1
@@ -83,40 +80,62 @@ def parse_functions(code_lines):
 
 
 # -------------------------
-# CARREGAR ARQUIVO
+# LIBRARY LOADER (.FXL)
 # -------------------------
-def load_file(path):
+def load_library(path):
     if not os.path.exists(path):
-        print(f"[ERROR] File not found: {path}")
-        sys.exit()
+        print(f"[ERROR] Library not found: {path}")
+        return []
 
     with open(path, "r", encoding="utf-8") as f:
         return f.readlines()
 
 
 # -------------------------
-# INPUT DE ARQUIVO (ANDROID SAFE)
+# IMPORT HANDLER
 # -------------------------
-def get_file_path():
-    if len(sys.argv) >= 2:
-        return sys.argv[1]
+def handle_imports(code_lines):
+    new_code = []
 
-    try:
-        return input("Digite o caminho do arquivo .fix: ").strip()
-    except:
-        print("[ERROR] Cannot read input")
-        sys.exit()
+    for line in code_lines:
+        if line.strip().lower().startswith("import"):
+            lib = line.replace("import", "").strip().strip('"')
+
+            lib_code = load_library(lib)
+
+            # injeta funções da lib direto no runtime
+            parse_functions(lib_code)
+        else:
+            new_code.append(line)
+
+    return new_code
 
 
 # -------------------------
 # MAIN
 # -------------------------
-file_path = get_file_path()
+def get_file():
+    if len(sys.argv) >= 2:
+        return sys.argv[1]
+    return input("Digite caminho .fix: ").strip()
 
-code = load_file(file_path)
 
+file_path = get_file()
+
+if not os.path.exists(file_path):
+    print("[ERROR] File not found")
+    sys.exit()
+
+with open(file_path, "r", encoding="utf-8") as f:
+    code = f.readlines()
+
+# IMPORTS
+code = handle_imports(code)
+
+# PARSE
 parse_functions(code)
 
+# RUN
 if "Main" in functions:
     run_block(functions["Main"])
 else:
